@@ -10,10 +10,11 @@
 // - If you choose to, you can use lodash for enumerable functionality.
 // - Use TDD all the way through!
 
-var Record = function( artist, title, price ) { 
+var Record = function( artist, title, price, amount ) { 
   this.artist = artist;
   this.title = title;
   this.price = price;
+  this.amount = amount;
 }
 
 module.exports = Record;

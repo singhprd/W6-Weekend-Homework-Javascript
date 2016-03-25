@@ -4,8 +4,8 @@ var assert = require('chai').assert;
 
 describe('Record Store', function() {
 
-  record1 = new Record( "The 1975", "The 1975 Album", 15 );
-  record2 = new Record( "Boyzone", "Wings", 1 );
+  record1 = new Record( "The 1975", "The 1975 Album", 15, 10 );
+  record2 = new Record( "Boyzone", "Wings", 1, 100 );
   recordStore1 = new RecordStore( [record1, record2], "Keith's Music Store", "Edinburgh" );
 
   it('should have a city', function() {
@@ -26,8 +26,13 @@ describe('Record Store', function() {
     }),
 
   it('should be able to sell a record', function() {
+    recordStore1.balance = 0;
     recordStore1.sellRecord( record1 );
     assert.equal( 15, recordStore1.balance )
+  }), 
+  it('should report on finantial situation', function() {
+    result = recordStore1.finSit();
+    assert.equal( 265, result );
   })
 
 })

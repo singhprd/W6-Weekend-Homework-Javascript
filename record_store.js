@@ -3,6 +3,7 @@
 // - Add some records to your RecordStore.
 // - Create a method that lists the inventory.
 
+var _ = require('lodash');
 
 var RecordStore = function( inventory, name, city ) {
   this.inventory = inventory;
@@ -28,7 +29,20 @@ RecordStore.prototype = {
   },
   sellRecord: function( recordToSell ) {
     this.balance = recordToSell.price + this.balance;
+  },
+
+  buyRecord: function( recordToBuy ) { 
+    this.balance = recordToBuy + this.balance;
+  },
+
+  finSit: function() {
+    stockValue = 0;
+    _.forEach (this.inventory, function( each ) {
+      stockValue = (each.amount * each.price) + stockValue;
+    })
+    return stockValue + this.balance;
   }
+
 };
 
 module.exports = RecordStore;
